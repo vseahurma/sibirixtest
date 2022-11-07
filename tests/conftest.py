@@ -15,7 +15,7 @@ def get_chrome_options():
 @pytest.fixture
 def get_webdriver(get_chrome_options):
     options = get_chrome_options
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome('chromedriver.exe')
     return driver
 
 
@@ -27,4 +27,4 @@ def setup(request, get_webdriver):
         request.cls.driver = driver
     driver.get(url)
     yield driver
-    driver.close()
+    driver.quit()
